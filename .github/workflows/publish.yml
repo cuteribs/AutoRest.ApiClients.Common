@@ -1,0 +1,36 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [closed]
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout repo
+      uses: actions/checkout@v3
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.x
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
+
+    - name: Build package
+      run: |
+        dotnet restore
+        dotnet pack -c release --no-restore -o dist
+        
+    - name: Publish package
+      run: |
+        dotnet nuget push ./dist/*.nupkg --skip-duplicate
+      
+      
+      
+      
+  
