@@ -18,8 +18,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.x
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
 
     - name: Build package
       run: |
@@ -27,8 +25,10 @@ jobs:
         dotnet pack -c release --no-restore -o dist
         
     - name: Publish package
+      env:
+        NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
       run: |
-        dotnet nuget push ./dist/*.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json
+        dotnet nuget push ./dist/*.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json -k $NUGET_TOKEN
       
       
       
