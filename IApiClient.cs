@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Veracity.ApiClients.Common
+namespace AutoRest.ApiClients.Common
 {
 	public interface IApiClient
 	{
