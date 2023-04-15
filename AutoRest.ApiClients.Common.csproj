@@ -9,6 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.*" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.*-*" />
 	</ItemGroup>
 
 </Project>
