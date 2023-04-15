@@ -28,7 +28,7 @@ jobs:
         
     - name: Publish package
       run: |
-        dotnet nuget push ./dist/*.nupkg --skip-duplicate
+        dotnet nuget push ./dist/*.nupkg --skip-duplicate -s https://api.nuget.org/v3/index.json
       
       
       
