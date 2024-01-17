@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Net.Http;
 
-namespace AutoRest.ApiClients.Common
+namespace AutoRest.ApiClients.Common;
+
+public interface IApiClient
 {
-	public interface IApiClient
-	{
-		Uri BaseUri { get; set; }
-	}
+	Uri BaseUri { get; set; }
+    HttpClient HttpClient { get; protected set; }
 }

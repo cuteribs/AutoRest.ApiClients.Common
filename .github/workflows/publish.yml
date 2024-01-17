@@ -17,12 +17,11 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.x
+        dotnet-version: 8.0.x
 
     - name: Build package
       run: |
-        dotnet restore
-        dotnet pack -c release --no-restore -o dist
+        dotnet pack -c release -o dist --include-symbols --include-source
         
     - name: Publish package
       env:
