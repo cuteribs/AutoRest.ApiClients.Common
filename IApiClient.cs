@@ -6,5 +6,5 @@ namespace AutoRest.ApiClients.Common;
 public interface IApiClient
 {
 	Uri BaseUri { get; set; }
-    HttpClient HttpClient { get; protected set; }
+	HttpClient HttpClient { get; set; }
 }
